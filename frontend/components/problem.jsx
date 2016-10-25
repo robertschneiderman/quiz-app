@@ -13,7 +13,12 @@ class Problem extends React.Component {
 
   handleEdit(e) {
     e.preventDefault();
-    this.setState({editing: true});     
+    this.setState({editing: true}, this.populateInputs.bind(this));     
+  }
+
+  populateInputs() {
+    $('#question-edit-input').val(this.props.problem.question);
+    $('#answer-edit-input').val(this.props.problem.answer);
   }
 
   handleDelete(e) {
@@ -36,7 +41,7 @@ class Problem extends React.Component {
       return (
         <div key={this.props.idx}>
           <div className="set">
-            <input id="question-edit-input" className="question" placeholder={this.props.problem.question} />
+            <input id="question-edit-input" className="question" />
             <input id="answer-edit-input" className="answer" placeholder={this.props.problem.answer} />
           </div>
           <div className="interface">

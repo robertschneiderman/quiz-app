@@ -32011,7 +32011,13 @@
 	    key: 'handleEdit',
 	    value: function handleEdit(e) {
 	      e.preventDefault();
-	      this.setState({ editing: true });
+	      this.setState({ editing: true }, this.populateInputs.bind(this));
+	    }
+	  }, {
+	    key: 'populateInputs',
+	    value: function populateInputs() {
+	      (0, _jquery2.default)('#question-edit-input').val(this.props.problem.question);
+	      (0, _jquery2.default)('#answer-edit-input').val(this.props.problem.answer);
 	    }
 	  }, {
 	    key: 'handleDelete',
@@ -32040,7 +32046,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'set' },
-	            _react2.default.createElement('input', { id: 'question-edit-input', className: 'question', placeholder: this.props.problem.question }),
+	            _react2.default.createElement('input', { id: 'question-edit-input', className: 'question' }),
 	            _react2.default.createElement('input', { id: 'answer-edit-input', className: 'answer', placeholder: this.props.problem.answer })
 	          ),
 	          _react2.default.createElement(
