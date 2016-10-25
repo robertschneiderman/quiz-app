@@ -16,10 +16,15 @@ class Problem extends React.Component {
     this.setState({editing: true});
   }
 
+  handleDelete(e) {
+    e.preventDefault();
+    this.props.remove(this.props.idx);    
+  }
+
   update(e) {
     e.preventDefault();
     let ques = $('#question-edit-input').val();
-    let answ = $('#answer-edit-input').val();
+    let answ = $('#answer-edit-input').val();     
 
     this.setState({editing: false});
 
@@ -27,7 +32,6 @@ class Problem extends React.Component {
   }
 
   renderProblem() {
-    debugger;
     if (this.state.editing) {
       return (
         <div key={this.props.idx}>
@@ -54,7 +58,7 @@ class Problem extends React.Component {
           </div>
           <div className="interface">
             <button onClick={this.handleEdit.bind(this)}>Edit</button>
-            <button>Delete</button>
+            <button onClick={this.handleDelete.bind(this)}>Delete</button>
           </div>
         </div>
       );

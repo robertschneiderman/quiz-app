@@ -9,14 +9,13 @@ class Quiz extends React.Component {
     super(props);
     this.state = {
       problems: [],
-      saved: true,
+      saveStatus: '',
     };
     window.state = this.state;
     this.addProblem.bind(this);
   }
   
   quizProblems() {
-    debugger;
     return this.state.problems.map((problem, i) => {
       return (
         <Problem
@@ -43,16 +42,21 @@ class Quiz extends React.Component {
     let problems = merge([], this.state.problems);
     problems[i].question = question;
     problems[i].answer = answer;
+    debugger;
     this.setState({problems});
   }
 
-  removeProblem(i, question, answer) {
-    
+  removeProblem(i) {
+    let problems = merge([], this.state.problems);
+    problems = problems.splice(i, 1);
+    this.setState({problems});    
   }  
 
   render() {
     return(
       <div className="quiz">
+        <button className="save-btn" onClick={this.save.bind(this)>Save</button>
+        <p className="save-status">{this.state.saveStatus}</p>
         <h2>Your Quiz!</h2>
         <div className="problems">
           {this.quizProblems()}
