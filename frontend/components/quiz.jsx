@@ -11,9 +11,19 @@ class Quiz extends React.Component {
       problems: [],
       saveStatus: '',
     };
-    window.state = this.state;
-    this.addProblem.bind(this);
+    // window.state = this.state;
+    // this.addProblem.bind(this);
+
+    if (localStorage.getItem('problems')) {
+      debugger;
+      this.state.problems = JSON.parse(localStorage.getItem('problems'));
+    }    
   }
+
+  // componentWillMount() {
+
+  // }
+
   
   quizProblems() {
     return this.state.problems.map((problem, i) => {
@@ -33,7 +43,8 @@ class Quiz extends React.Component {
     problem['answer'] = answer;
     let problems = this.state.problems.concat([problem]);
     this.setState({
-      problems
+      problems,
+      saveStatus: 'not saved'
     });
     // debugger;
   }
@@ -42,20 +53,33 @@ class Quiz extends React.Component {
     let problems = merge([], this.state.problems);
     problems[i].question = question;
     problems[i].answer = answer;
-    debugger;
-    this.setState({problems});
+    this.setState({
+      problems,
+      saveStatus: 'not saved'
+    });
   }
 
   removeProblem(i) {
     let problems = merge([], this.state.problems);
-    problems = problems.splice(i, 1);
-    this.setState({problems});    
-  }  
+    problems.splice(i, 1);
+    this.setState({
+      problems,
+      saveStatus: 'not saved'
+    });    
+  }
+
+  save(e) {
+    e.preventDefault();
+    localStorage.setItem('problems', JSON.stringify(this.state.problems));
+    this.setState({
+      saveStatus: 'saved!'      
+    })
+  }
 
   render() {
     return(
       <div className="quiz">
-        <button className="save-btn" onClick={this.save.bind(this)>Save</button>
+        <button className="save-btn" onClick={this.save.bind(this)}>Save</button>
         <p className="save-status">{this.state.saveStatus}</p>
         <h2>Your Quiz!</h2>
         <div className="problems">

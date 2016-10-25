@@ -13,6 +13,9 @@ class QuizForm extends React.Component {
     let ques = $('#question-input').val();
     let answ = $('#answer-input').val();
 
+    $('#question-input').val('');
+    $('#answer-input').val('');
+
     this.props.addProblem(ques, answ);    
   }
 
