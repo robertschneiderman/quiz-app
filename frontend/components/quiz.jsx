@@ -82,6 +82,18 @@ class Quiz extends React.Component {
     }, Math.random() * 1000)
   }
 
+  saveBtn() {
+    if (this.state.saveStatus === 'not saved') {
+      return(
+        <button className="save-btn" onClick={this.save.bind(this)}>Save</button>   
+      ) 
+    } else {
+      return(
+        <button className="save-btn" disabled onClick={this.save.bind(this)}>Save</button>   
+      )       
+    }
+  }
+
   errorModal() {
     let modal = $('#modal')
     modal.addClass('active');
@@ -92,13 +104,12 @@ class Quiz extends React.Component {
   }
 
   render() {
-    // let saveDisabled = (this.state.saveStatus === 'saved!') ? 'true' : 'false';
     return(
       <div className="quiz">
         <div id="modal" className="modal">
           <p>Sorry, but the changes failed to save!</p>
         </div>
-        <button className="save-btn" onClick={this.save.bind(this)}>Save</button>
+        {this.saveBtn()}
         <p className="save-status">{this.state.saveStatus}</p>
         <h2 className="title">Your Quiz!</h2>
         <div className="problems">

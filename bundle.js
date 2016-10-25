@@ -21593,6 +21593,23 @@
 	      }, Math.random() * 1000);
 	    }
 	  }, {
+	    key: 'saveBtn',
+	    value: function saveBtn() {
+	      if (this.state.saveStatus === 'not saved') {
+	        return _react2.default.createElement(
+	          'button',
+	          { className: 'save-btn', onClick: this.save.bind(this) },
+	          'Save'
+	        );
+	      } else {
+	        return _react2.default.createElement(
+	          'button',
+	          { className: 'save-btn', disabled: true, onClick: this.save.bind(this) },
+	          'Save'
+	        );
+	      }
+	    }
+	  }, {
 	    key: 'errorModal',
 	    value: function errorModal() {
 	      var modal = (0, _jquery2.default)('#modal');
@@ -21605,7 +21622,6 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      // let saveDisabled = (this.state.saveStatus === 'saved!') ? 'true' : 'false';
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'quiz' },
@@ -21618,11 +21634,7 @@
 	            'Sorry, but the changes failed to save!'
 	          )
 	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { className: 'save-btn', onClick: this.save.bind(this) },
-	          'Save'
-	        ),
+	        this.saveBtn(),
 	        _react2.default.createElement(
 	          'p',
 	          { className: 'save-status' },
