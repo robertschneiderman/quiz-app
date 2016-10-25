@@ -2,6 +2,7 @@ import React from 'react';
 import QuizForm from './quiz_form';
 import Problem from './problem';
 import merge from 'lodash/merge';
+import $ from 'jquery';
 
 class Quiz extends React.Component {
 
@@ -70,7 +71,7 @@ class Quiz extends React.Component {
   save(e) {
     e.preventDefault();
     setTimeout(() => {
-      if (Math.random() < 0.1) {
+      if (Math.random() < 0.3) {
         this.errorModal();
       } else {
         localStorage.setItem('problems', JSON.stringify(this.state.problems));
@@ -82,13 +83,21 @@ class Quiz extends React.Component {
   }
 
   errorModal() {
+    let modal = $('#modal')
+    modal.addClass('active');
 
+    setTimeout(() => {
+      modal.removeClass('active');
+    }, 1500);
   }
 
   render() {
     // let saveDisabled = (this.state.saveStatus === 'saved!') ? 'true' : 'false';
     return(
       <div className="quiz">
+        <div id="modal" className="modal">
+          <p>Sorry, but the changes failed to save!</p>
+        </div>
         <button className="save-btn" onClick={this.save.bind(this)}>Save</button>
         <p className="save-status">{this.state.saveStatus}</p>
         <h2 className="title">Your Quiz!</h2>

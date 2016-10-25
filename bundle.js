@@ -21490,6 +21490,10 @@
 	
 	var _merge2 = _interopRequireDefault(_merge);
 	
+	var _jquery = __webpack_require__(175);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21578,7 +21582,7 @@
 	
 	      e.preventDefault();
 	      setTimeout(function () {
-	        if (Math.random() < 0.1) {
+	        if (Math.random() < 0.3) {
 	          _this3.errorModal();
 	        } else {
 	          localStorage.setItem('problems', JSON.stringify(_this3.state.problems));
@@ -21590,7 +21594,14 @@
 	    }
 	  }, {
 	    key: 'errorModal',
-	    value: function errorModal() {}
+	    value: function errorModal() {
+	      var modal = (0, _jquery2.default)('#modal');
+	      modal.addClass('active');
+	
+	      setTimeout(function () {
+	        modal.removeClass('active');
+	      }, 1500);
+	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -21598,6 +21609,15 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'quiz' },
+	        _react2.default.createElement(
+	          'div',
+	          { id: 'modal', className: 'modal' },
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Sorry, but the changes failed to save!'
+	          )
+	        ),
 	        _react2.default.createElement(
 	          'button',
 	          { className: 'save-btn', onClick: this.save.bind(this) },

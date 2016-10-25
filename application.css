@@ -2,7 +2,31 @@
 
 .save-btn {color: #fff;position: fixed;right: 3rem;padding: .5rem .8rem;border-radius: 3px;font-size: 0.9rem;background-color: #00d0ff;border: 0;}
 
-.save-status {position: fixed;right: 3.5rem;top: 4rem;}
+.save-status {position: fixed;right: 3.5rem;top: 5rem;font-size: 1.4rem;color: #777;}
+
+.modal {
+  opacity: 0;
+  position: absolute;
+  background-color: #f7f7f7;
+  border: 1px solid #aaa;
+  padding: 2rem;
+  color: #ff6a6a;
+  top: -20%;
+  left: 50%;
+  transform: translate3d(-50%, 0%, 0);  
+  transition: .3s all;
+}
+
+.modal.active {
+  display: block;
+  opacity: 1;
+  top: 20%;  
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.modal p {
+
+}
 
 .title {color: #999;font-size: 3rem;}
 
