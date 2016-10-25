@@ -21514,7 +21514,6 @@
 	    // this.addProblem.bind(this);
 	
 	    if (localStorage.getItem('problems')) {
-	      debugger;
 	      _this.state.problems = JSON.parse(localStorage.getItem('problems'));
 	    }
 	    return _this;
@@ -21575,15 +21574,27 @@
 	  }, {
 	    key: 'save',
 	    value: function save(e) {
+	      var _this3 = this;
+	
 	      e.preventDefault();
-	      localStorage.setItem('problems', JSON.stringify(this.state.problems));
-	      this.setState({
-	        saveStatus: 'saved!'
-	      });
+	      setTimeout(function () {
+	        if (Math.random() < 0.1) {
+	          _this3.errorModal();
+	        } else {
+	          localStorage.setItem('problems', JSON.stringify(_this3.state.problems));
+	          _this3.setState({
+	            saveStatus: 'saved!'
+	          });
+	        }
+	      }, Math.random() * 1000);
 	    }
+	  }, {
+	    key: 'errorModal',
+	    value: function errorModal() {}
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      // let saveDisabled = (this.state.saveStatus === 'saved!') ? 'true' : 'false';
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'quiz' },
@@ -21599,7 +21610,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'h2',
-	          null,
+	          { className: 'title' },
 	          'Your Quiz!'
 	        ),
 	        _react2.default.createElement(
@@ -32025,11 +32036,21 @@
 	            _react2.default.createElement(
 	              'p',
 	              { id: 'question', className: 'question' },
+	              _react2.default.createElement(
+	                'span',
+	                null,
+	                'Question: '
+	              ),
 	              this.props.problem.question
 	            ),
 	            _react2.default.createElement(
 	              'p',
 	              { id: 'answer', className: 'answer' },
+	              _react2.default.createElement(
+	                'span',
+	                null,
+	                'Answer: '
+	              ),
 	              this.props.problem.answer
 	            )
 	          ),

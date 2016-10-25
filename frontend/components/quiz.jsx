@@ -15,7 +15,6 @@ class Quiz extends React.Component {
     // this.addProblem.bind(this);
 
     if (localStorage.getItem('problems')) {
-      debugger;
       this.state.problems = JSON.parse(localStorage.getItem('problems'));
     }    
   }
@@ -70,18 +69,29 @@ class Quiz extends React.Component {
 
   save(e) {
     e.preventDefault();
-    localStorage.setItem('problems', JSON.stringify(this.state.problems));
-    this.setState({
-      saveStatus: 'saved!'      
-    })
+    setTimeout(() => {
+      if (Math.random() < 0.1) {
+        this.errorModal();
+      } else {
+        localStorage.setItem('problems', JSON.stringify(this.state.problems));
+        this.setState({
+          saveStatus: 'saved!'      
+        });
+      }
+    }, Math.random() * 1000)
+  }
+
+  errorModal() {
+
   }
 
   render() {
+    // let saveDisabled = (this.state.saveStatus === 'saved!') ? 'true' : 'false';
     return(
       <div className="quiz">
         <button className="save-btn" onClick={this.save.bind(this)}>Save</button>
         <p className="save-status">{this.state.saveStatus}</p>
-        <h2>Your Quiz!</h2>
+        <h2 className="title">Your Quiz!</h2>
         <div className="problems">
           {this.quizProblems()}
         </div>

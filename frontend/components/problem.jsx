@@ -8,12 +8,12 @@ class Problem extends React.Component {
     super(props);
     this.state = {
       editing: false
-    }
+    };
   }
 
   handleEdit(e) {
     e.preventDefault();
-    this.setState({editing: true});
+    this.setState({editing: true});     
   }
 
   handleDelete(e) {
@@ -50,10 +50,10 @@ class Problem extends React.Component {
         <div key={this.props.idx}>
           <div className="set">
             <p id="question" className="question">
-              {this.props.problem.question}
+              <span>Question: </span>{this.props.problem.question}
             </p>
             <p id="answer" className="answer">
-              {this.props.problem.answer}
+              <span>Answer: </span>{this.props.problem.answer}
             </p>
           </div>
           <div className="interface">

@@ -1,0 +1,65 @@
+.app {max-width: 1110px;margin: 0 auto;}
+
+.save-btn {color: #fff;position: fixed;right: 3rem;padding: .5rem .8rem;border-radius: 3px;font-size: 0.9rem;background-color: #00d0ff;border: 0;}
+
+.save-status {position: fixed;right: 3.5rem;top: 4rem;}
+
+.title {color: #999;font-size: 3rem;}
+
+.problems {
+
+}
+
+.problem {margin-bottom: 2.5rem;}
+
+.set {
+
+}
+
+.question {font-size: 1.3rem;color: #777;}
+
+.question span {color: #ccc;font-size: 1rem;font-style: italic;}
+
+.answer {font-size: 1.3rem;color: #777;}
+
+.answer span {
+  color: #ccc;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+#question-edit-input, #answer-edit-input {
+  margin-bottom: 1rem;
+}
+
+
+.interface {
+
+}
+
+.interface button:first-child {color: #fff;padding: .5rem .8rem;border-radius: 3px;font-size: 0.9rem;background-color: #59e4aa;margin-right: 0.6rem;border: 0;}
+.interface button:nth-child(2) {
+  color: #fff;
+  padding: .5rem .8rem;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  background-color: #e459d3;
+  border: 0;
+}
+
+.quiz-form {margin-top: 2rem;}
+
+.quiz-form input[type=text] {display: block;font-size: 1.1rem;padding: 0.6rem;margin-bottom: 1rem;}
+
+.quiz-form textarea {width: 600px;height: 130px;display: block;font-size: 1.1rem;padding: 0.6rem;margin-bottom: 1rem;}
+
+
+.quiz-form input[type=submit] {
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  border-radius: 3px;
+  font-size: 1.1rem;
+  background-color: #59e4aa;
+  margin-right: 0.6rem;
+  border: 0;
+}
