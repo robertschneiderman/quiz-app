@@ -21581,9 +21581,11 @@
 	      var _this3 = this;
 	
 	      e.preventDefault();
+	      (0, _jquery2.default)('.save-btn').prop('disabled', true);
 	      setTimeout(function () {
 	        if (Math.random() < 0.3) {
 	          _this3.errorModal();
+	          (0, _jquery2.default)('.save-btn').prop('disabled', false);
 	        } else {
 	          localStorage.setItem('problems', JSON.stringify(_this3.state.problems));
 	          _this3.setState({

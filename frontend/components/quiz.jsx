@@ -70,9 +70,11 @@ class Quiz extends React.Component {
 
   save(e) {
     e.preventDefault();
+    $('.save-btn').prop('disabled', true);
     setTimeout(() => {
       if (Math.random() < 0.3) {
         this.errorModal();
+        $('.save-btn').prop('disabled', false);
       } else {
         localStorage.setItem('problems', JSON.stringify(this.state.problems));
         this.setState({
